@@ -1,0 +1,36 @@
+---
+title: "Building a Modern Portfolio with Next.js & Three.js"
+date: "2025-12-18"
+description: "A deep dive into the tech stack behind this portfolio, including React Three Fiber particles and Framer Motion animations."
+readTime: "5 min read"
+tags: ["Next.js", "Three.js", "React", "Design"]
+---
+
+Building a portfolio in 2025 demands more than just static HTML. Users expect interactivity, immersion, and performance. In this post, I'll walk through how I built this site using **Next.js 16**, **Tailwind CSS v4**, and **React Three Fiber**.
+
+## The Tech Stack
+
+- **Next.js (App Router)**: For robust routing and server-side rendering.
+- **React Three Fiber**: To bring the 3D "JAY" particle effect to life.
+- **Framer Motion**: For orchestrating complex entrance animations.
+- **Lenis**: For that buttery smooth scroll feel.
+
+## The Particle Effect
+
+The hero section features a particle simulation where thousands of points form text. This was achieved by sampling points from a 3D text geometry and applying a custom shader material.
+
+```javascript
+// Pseudo-code for particle logic
+const particles = useMemo(() => {
+  const geometry = new TextGeometry('JAY', fontOptions);
+  return new Float32Array(geometry.attributes.position.array);
+}, []);
+```
+
+## Optimizing for Performance
+
+With heavy 3D visualizations, performance is key. I used `useFrame` sparingly and offloaded heavy computations to the GPU where possible.
+
+## Conclusion
+
+This portfolio is a living playground. Stay tuned for more updates on my journey with AI engineering!
