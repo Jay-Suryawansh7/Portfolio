@@ -45,7 +45,9 @@ export default function ContactSection() {
             text: (
               <div className="flex flex-col gap-1">
                 <span>Available commands:</span>
-                <span className="pl-4">- contact --name &quot;Name&quot; --message &quot;Msg&quot;</span>
+                <span className="pl-4">- contact (Display info)</span>
+                <span className="pl-4">- email (Show email)</span>
+                <span className="pl-4">- phone (Show number)</span>
                 <span className="pl-4">- social</span>
                 <span className="pl-4">- clear</span>
                 <span className="pl-4">- help</span>
@@ -83,17 +85,43 @@ export default function ContactSection() {
         break;
 
       case "contact":
-        if (args.length === 1) {
-            setHistory((prev) => [
-                ...prev, 
-                { type: "error", text: "Usage: contact --name <name> --message <message>" }
-            ]);
-        } else {
+        setHistory((prev) => [
+          ...prev,
+          {
+            type: "response",
+            text: (
+              <div className="flex flex-col gap-2">
+                <span>Contact Details:</span>
+                <span className="pl-4 text-cyan-400">Email: jaysuryawanshi200716@gmail.com</span>
+                <span className="pl-4 text-cyan-400">Phone: 7024501967</span>
+                <span className="pl-4 text-gray-500 text-xs mt-2">
+                  (To send a direct message, use: contact --name "Name" --message "Msg")
+                </span>
+              </div>
+            ),
+          },
+        ]);
+        
+        if (args.length > 1) {
              setHistory((prev) => [
                 ...prev,
                 { type: "success", text: "Message transmitted successfully! Jay will respond shortly." }
             ]);
         }
+        break;
+
+      case "email":
+        setHistory((prev) => [
+          ...prev,
+          { type: "response", text: <span className="text-cyan-400">jaysuryawanshi200716@gmail.com</span> },
+        ]);
+        break;
+
+      case "phone":
+        setHistory((prev) => [
+          ...prev,
+          { type: "response", text: <span className="text-cyan-400">7024501967</span> },
+        ]);
         break;
 
       default:
