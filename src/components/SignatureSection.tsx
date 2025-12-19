@@ -53,7 +53,7 @@ export default function SignatureSection() {
           >
             ENGINEERING
             <br />
-            IS MY DNA
+            IS IN MY DNA
           </motion.h2>
           <p className="text-gray-400 text-lg md:text-xl font-light tracking-wide mb-8">
             Crafting digital evolution through clean code and complex logic.
